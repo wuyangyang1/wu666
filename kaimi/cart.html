@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css">
+		<link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css">
+		<link rel="stylesheet" type="text/css" href="css/global.css" />
+		<link rel="stylesheet" type="text/css" href="css/cart.css" />
+		<link rel="stylesheet" type="text/css" href="statics/fonts/iconfont.css" />
+		<title>购物车页</title>
+	</head>
+	<body>
+		<!-- 页头区域：返回菜单 -->
+		<header class="dis-box header-menu b-color color-whie"><a class="" href="javascript:history.go(-1)"><i class="iconfont icon-jiantou"></i></a>
+			<h3 class="box-flex">购物车</h3>
+			<p><a href="#"><i class="iconfont icon-home"></i></a></p>
+		</header>
+		<p class="flow-price ect-padding-lr ect-padding-tb"> 共<b id="total_number">2</b>件商品，总价(不含运费)：<b class="ect-colory" id="goods_subtotal">￥3376.00元</b>
+		</p>
+		<section class="ect-pro-list flow-pic ect-border-bottom0">
+			<ul id="ect-pro-list">
+
+				<!-- <li class="n-flow1-box">
+					<div class="j-chack-box n-flow-ckecked">
+
+						<input type="checkbox" name="bike" />
+						<label></label>
+
+					</div>
+					<div class="n-flow-right-sum">
+						<div class="ect-clear-over">
+							<a href="#"><img src="http://shop.shenzhou888.com.cn/data/attached/images/201805/thumb_img/4_thumb_G_1526430080529.jpg"
+								 title="watch"></a>
+							<dl>
+								<dt>
+									<h4 class="title"><a href="#">苹果watch</a></h4>
+								</dt>
+								<dd class="ect-color999">
+									<p></p>
+									<p><strong class="ect-colory">￥3288.00元</strong></p>
+								</dd>
+							</dl>
+						</div>
+						<div class="ect-margin-tb ect-margin-bottom0 ect-clear-over flow-num-del">
+							<div class="input-group pull-left wrap"> <span class="input-group-addon">-</span>
+								<input type="text" class="form-num form-contro" name="40" id="goods_number40" autocomplete="off" value="1">
+								<span class="input-group-addon" onclick="change_goods_number('3',40)">+</span> </div>
+
+							<div class="pull-right">
+								<a href="javascript:if (confirm('您确实要把该商品移出购物车吗？')) location.href='#';"><img class="n-shanchutupian" src="images/iconfont-xiao1.png"
+									 style="width:1.25rem;height:1.25rem;margin-right:0.4rem;margin-top:0.4rem;"></a>
+							</div>
+						</div>
+					</div>
+				</li> -->
+			</ul>
+		</section>
+		<!-- 		<div class="flow-jiesuan ect-padding-lr ect-padding-tb" style="background: #f7f7f7;">
+			<a href="#" type="button" class="btn btn-info ect-btn-info ect-bg">立即结算</a>
+		</div> -->
+		<div class="ui-cart-footer has-bottom">
+			<div class="list-checkbox">
+				<input type="checkbox" checked id="checkbox-all" class="checkbox">
+				<label for="checkbox-all"></label>
+				<i class="total-price">合计<span>￥ 0.00 </span></i>
+			</div>
+			<span class="cart-footer-btn checkout" id="checkOrder">结算(0)</span>
+		</div>
+		<div class="flow-no-pro" style="display: none;"> <img src="images/gwc.png">
+			<p class="text-center">购物车什么都没有，赶快去购物吧</p>
+			<a type="button" href="#" class="btn btn-info ect-btn-info ect-bg">去购物</a>
+		</div>
+	</body>
+</html>
+<script type="text/html" id="cartList">
+	{{each  as item index}}
+        <li class="n-flow1-box">
+            <div class="j-chack-box n-flow-ckecked">
+               <input type="checkbox" name="bike" checked data-item-index={{index}} onclick="updataCartList({{index}})" />
+               <label></label>
+            </div>
+            <div class="n-flow-right-sum">
+                <div class="ect-clear-over">
+                    <a href="#"><img src="{{item.product.default_photo.large}}"title="watch"></a>
+                    <dl>
+                        <dt>
+                         <h4 class="title"><a href="#">{{item.product.name}}</a></h4>
+                        </dt>
+                        <dd class="ect-color999">
+                         <p></p >
+                         <p><strong class="ect-colory">￥{{item.product.current_price}}元</strong></p >
+                        </dd>
+                   </dl>
+                </div>
+                <div class="ect-margin-tb ect-margin-bottom0 ect-clear-over flow-num-del">
+                   <div class="input-group pull-left wrap"> <span class="input-group-addon" onclick="jianOne(this,{{index}})">-</span>
+                        <input type="text" class="form-num form-contro" name="40" id="goods_number40" autocomplete="off" value="{{item.amount}}">
+                        <span class="input-group-addon" onclick="addOne(this,{{index}})">+</span> 
+                    </div>
+                   <div class="pull-right">
+                    <a class="delCart" data-item-index="{{index}}" href="#"><img class="n-shanchutupian" src="images/iconfont-xiao1.png"
+                      style="width:1.25rem;height:1.25rem;margin-right:0.4rem;margin-top:0.4rem;"></a>
+                   </div>
+                 </div>
+            </div>
+        </li>
+{{/each}}
+</script>
+<script src="http://cdn.staticfile.org/artTemplate.js/3.0.1/template.js"></script>
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/global.js"></script>
+<script type="text/javascript">
+	//参数1：obj 为被点击span标签
+	//参数2：n是该标签的序号，也是该商品对应在GoodsList数组中的下标
+	function addOne(obj, n) {
+		// console.log(obj);
+		//获取+号对应的input的value
+		obj.previousElementSibling.value++; //注意上限不能超过库存量
+		var goodsNum = obj.previousElementSibling.value;
+		$.ajax({
+			url: "http://api.shenzhou888.com.cn/v2/ecapi.cart.update",
+			headers: {
+				"X-ECAPI-Authorization": localStorage.getItem("userToken")
+			},
+			data: {
+				good: GoodsList[n].id,
+				amount: goodsNum
+			},
+			type: "post",
+			dataType: "json",
+			success: function(data) {
+				console.log(data);
+				if (data.error_code === 0) {
+					GoodsList[n].amount++; //将GoodsList中商品数量也加1
+					//重新计算总价和数量，更新底部
+					$(".ui-cart-footer span.checkout").text("结算(" + getCheckedGoodsCount(GoodsList) + ")");
+					$(".ui-cart-footer i.total-price span").text("￥ " + getCheckedGoodsAmount(GoodsList) + " ");
+				}
+			}
+		})
+	}
+
+	function jianOne(obj, n) {
+		// console.log(obj);
+		//获取-号对应的input的value
+		obj.nextElementSibling.value--; //注意上限不能超过库存量
+		var goodsNum = obj.nextElementSibling.value;
+		$.ajax({
+			url: "http://api.shenzhou888.com.cn/v2/ecapi.cart.update",
+			headers: {
+				"X-ECAPI-Authorization": localStorage.getItem("userToken")
+			},
+			data: {
+				good: GoodsList[n].id,
+				amount: goodsNum
+			},
+			type: "post",
+			dataType: "json",
+			success: function(data) {
+				console.log(data);
+				if (data.error_code === 0) {
+					GoodsList[n].amount--; //将GoodsList中商品数量也加1
+					//重新计算总价和数量，更新底部
+					$(".ui-cart-footer span.checkout").text("结算(" + getCheckedGoodsCount(GoodsList) + ")");
+					$(".ui-cart-footer i.total-price span").text("￥ " + getCheckedGoodsAmount(GoodsList) + " ");
+				}
+			}
+		})
+	}
+	//1、页面加载完成后，判断用户是否登录，没登录，跳转到登录页面。
+	//2、已登录，调用【购物车更新】接口http://api.ecshop.com/v2/ecapi.cart.get，获取与用户token捆绑的购物车列表数据。然后渲染页面
+	var total_price = 0; //商品总价格
+	var total_amount = 0; //商品总数
+	var GoodsList = []; // 保存处理后的商品列表json,渲染页面，计算价格等都是对此变量操作
+	window.onload = function() {
+		if (checkuserLogin()) {
+			//用户已登录
+			$.ajax({
+				url: "http://api.shenzhou888.com.cn/v2/ecapi.cart.get",
+				headers: {
+					"X-ECAPI-Authorization": localStorage.getItem("userToken")
+				},
+				type: "post",
+				dataType: "json",
+				success: function(data) {
+					console.log(data);
+					// 第一次获取页面
+
+					var cartGoods = data.goods_groups[0].goods;
+					GoodsList = cartGoods.map(function(item, index, self) {
+						item.selected = true; //商品默认都是被选中
+						return item;
+					})
+					$(".ui-cart-footer span.checkout").text("结算(" + getCheckedGoodsCount(GoodsList) + ")");
+					$(".ui-cart-footer i.total-price span").text("￥ " + getCheckedGoodsAmount(GoodsList) + " ");
+					console.log(GoodsList); //得到处理好的数组，每个里面都多个selected属性
+					renderCart(GoodsList); //渲染页面
+					//给 + 和 - 绑定事件
+					// $(".input-group span:contains('-')").on("click",function(){
+					// 	console.log( $(this) );
+					// })
+					// $(".input-group span:contains('+')").on("click",function(){
+					// 	console.log( $(this) );
+					// })
+					//给删除按钮绑定事件
+					$("a.delCart").on("click", function(evt) {
+						evt.preventDefault();
+						//获取删除按钮对应的序号，即要删除商品在GoodesLiat数组的下标
+						//根据下标找要删除商品的id号
+						var cartListID = GoodsList[$(this).attr("data-item-index")].id;
+						//从GoodsList数组中移除该商品
+						GoodsList[$(this).attr("data-item-index")].selected = false;
+
+
+						console.log(cartListID);
+						$btn = $(this);
+						$.ajax({
+							url: "http://api.shenzhou888.com.cn/v2/ecapi.cart.delete",
+							headers: {
+								"X-ECAPI-Authorization": localStorage.getItem("userToken")
+							},
+							data: {
+								good: cartListID
+							},
+							type: "post",
+							dataType: "json",
+							beforSend: function() {
+								// console.log($(this));
+								//此处增加一个loading效果，提示正在删除
+							},
+							complete: function() {
+								//隐藏loading
+							},
+							success: function(data) {
+								if (data.error_code === 0) {
+									$.toast("商品已从购物车中删除")
+									//把该商品对应的DOM从网页中移除
+									$btn.closest("li.n-flow1-box").remove();
+									//重新计算总价和数量，更新底部
+									$(".ui-cart-footer span.checkout").text("结算(" + getCheckedGoodsCount(GoodsList) + ")");
+									$(".ui-cart-footer i.total-price span").text("￥ " + getCheckedGoodsAmount(GoodsList) + " ");
+								} else {
+									$.toast(data.error_desc);
+								}
+							}
+						})
+					})
+				}
+			})
+		} else {
+			//没登录，两种处理方法，1之间跳转到登录页。2、显示一个空购物车画面
+		}
+		
+		// 点击之后全部取消
+		$("#checkbox-all").on("click", function() {
+			console.log("okk")
+			$.ajax({
+				url: "http://api.shenzhou888.com.cn/v2/ecapi.cart.get",
+				headers: {
+					"X-ECAPI-Authorization": localStorage.getItem("userToken")
+				},
+				type: "post",
+				dataType: "json",
+				success: function(data) {
+					GoodsList.forEach(function(item, index, self) {
+						GoodsList[index].selected = !GoodsList[index].selected;
+
+						console.log(GoodsList[index].selected);
+						if (GoodsList[index].selected) {
+							$("input[type=checkbox]").prop("checked", true);
+						} else {
+							$("input[type=checkbox]").removeAttr('checked');
+						}
+						$(".ui-cart-footer span.checkout").text("结算(" + getCheckedGoodsCount(GoodsList) + ")");
+						$(".ui-cart-footer i.total-price span").text("￥ " + getCheckedGoodsAmount(GoodsList) + " ");
+					})
+				}
+			})
+
+
+		})
+	}
+
+	function renderCart(goodsList) {
+		var str = template("cartList", goodsList);
+		$("#ect-pro-list").html(str);
+	}
+
+	function updataCartList(n) {
+		GoodsList[n].selected = !GoodsList[n].selected;
+
+		$(".ui-cart-footer span.checkout").text("结算(" + getCheckedGoodsCount(GoodsList) + ")");
+		$(".ui-cart-footer i.total-price span").text("￥ " + getCheckedGoodsAmount(GoodsList) + " ");
+	}
+	// 计算总数量：
+	function getCheckedGoodsCount(cartGoods) {
+		var checkedGoodsCount = 0;
+		cartGoods.forEach(function(item) {
+			if (item.selected) {
+				checkedGoodsCount += item.amount;
+			}
+		});
+		return checkedGoodsCount;
+	}
+	//计算总价
+	function getCheckedGoodsAmount(cartGoods) {
+		var checkedGoodsCount = 0;
+		cartGoods.forEach(function(item) {
+			if (item.selected) {
+				checkedGoodsCount += item.price * item.amount;
+			}
+		});
+		return checkedGoodsCount.toFixed(2);
+	}
+	//结算按钮
+	$("#checkOrder").on("click", function() {
+		//遍历GoodsList数组，找到所有selected属性为true的对象，然后生成一个新的数组
+		// for( var i=0;i<GoodsList.length;i++){
+		// 	if(GoodsList[i].isSealed === true){
+		// 		newArr.push(GoodsList[i]);
+		// 	}
+		var goodsInfo = [];
+		var newArr = GoodsList.filter(function(item, index, self) {
+			// if(item.selected){
+			// 	return true;
+			// }
+			return item.selected;
+		});
+		// console.log(newArr);
+		newArr.forEach(function(item, index, seft) {
+			var str = '{"goods_id":"' + item.goods_id + '","amout":"' + item.amount + '","price":' + item.price +
+				',"thumb":"' + item.product.default_photo.thumb + '"}';
+			goodsInfo.push(str);
+		})
+		var str = encodeURI(goodsInfo.join(","));
+		var total_price = getCheckedGoodsAmount(GoodsList);
+		var amount = getCheckedGoodsCount(GoodsList);
+		console.log(total_price);
+		window.location.href = "order.html?goodsInfo=[" + goodsInfo.join(",") + "]&total_price=" + total_price + "&amount=" +
+			amount;
+		// checkOrder.html?goodsInfo=[{goods_id:4,amout:1},{goods_id:5,amout:1}]
+	})
+</script>

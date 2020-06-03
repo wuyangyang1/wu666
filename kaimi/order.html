@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css">
+		<link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css">
+		<link rel="stylesheet" type="text/css" href="css/global.css" />
+		
+		<title>确认订单</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				/* font-size: 12px; */
+			}
+
+			.box {}
+
+			/* 顶部 */
+			.mint-header.is-fixed {
+				width: 100%;
+				top: 0;
+				right: 0;
+				left: 0;
+				position: fixed;
+				z-index: 1;
+				display: flex;
+				justify-content: center;
+				border-bottom: 1px solid #e8eaed;
+				padding: 10px 0 10px 0;
+				background: #fff;
+			}
+
+			.mint-header-button.is-left {
+				text-align: left;
+			}
+
+			.left-item[data-v-f80bae56],
+			.right-item[data-v-f80bae56] {
+				display: -ms-flexbox;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+
+			.icon[data-v-f80bae56] {
+				width: 24px;
+				height: 24px;
+			}
+
+			.mint-header-title {
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				font-size: inherit;
+				font-weight: 400;
+				text-align: center;
+				flex: 1;
+			}
+
+			.mint-header-button.is-right {
+				text-align: right;
+			}
+
+
+			/* 添加收货地址 */
+
+			.container[data-v-f1343698] {
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				-ms-flex-pack: start;
+				justify-content: flex-start;
+				-ms-flex-align: stretch;
+				align-items: stretch;
+				background-color: #fff;
+				margin-top: 65px;
+				/* padding-bottom: 5px; */
+			}
+
+			.top-wrapper[data-v-f1343698] {
+				-ms-flex: 1;
+				flex: 1;
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex-direction: row;
+				flex-direction: row;
+				-ms-flex-pack: start;
+				justify-content: flex-start;
+				-ms-flex-align: center;
+				align-items: center;
+				background-color: #fff;
+				padding: 20px 0 40px 0;
+			}
+
+			.unselected-wrapper[data-v-f1343698] {
+				-ms-flex: 1;
+				flex: 1;
+				display: -ms-flexbox;
+				/* display: flex;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				-ms-flex-pack: center;
+				justify-content: center;
+				-ms-flex-align: center;
+				align-items: center; */
+			}
+
+			.desc[data-v-f1343698] {
+				color: #7c7f88;
+				font-size: 14px;
+			}
+
+			.indicator[data-v-f1343698] {
+				width: 7px;
+				height: 12px;
+				margin-left: 10px;
+				margin-right: 10px;
+			}
+
+			.line-wrapper[data-v-f1343698] {
+				left: 0;
+				right: 0;
+				bottom: 0;
+				width: 100%;
+				height: 2px;
+			}
+
+			/* 商品数量  第三部分 */
+			.container[data-v-360922b6] {
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex-direction: row;
+				flex-direction: row;
+				-ms-flex-pack: start;
+				justify-content: flex-start;
+				-ms-flex-align: center;
+				align-items: center;
+				background-color: #fff;
+				border-bottom: 1px solid #e8eaed;
+				padding: 20px 0 20px 0;
+			}
+
+			.container .photo-wrapper[data-v-360922b6] {
+				-ms-flex: 1;
+				flex: 1;
+				width: 16.666666rem;
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex-direction: row;
+				flex-direction: row;
+				-ms-flex-pack: start;
+				justify-content: flex-start;
+				-ms-flex-align: stretch;
+				align-items: stretch;
+				overflow: hidden;
+				position: relative;
+			}
+			
+
+			.container .photo-wrapper img[data-v-360922b6] {
+				margin-left: 10px;
+				width: 60px;
+				height: 60px;
+			}
+
+			.container .right-wrapper[data-v-360922b6] {
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex-direction: row;
+				flex-direction: row;
+				-ms-flex-pack: start;
+				justify-content: flex-start;
+				-ms-flex-align: center;
+				align-items: center;
+			}
+
+			.container .right-wrapper .subtitle[data-v-360922b6] {
+				-ms-flex: 1;
+				flex: 1;
+				margin-left: 20px;
+				color: #7c7f88;
+				font-size: 13px;
+				text-align: right;
+			}
+
+			.container .right-wrapper .indicator[data-v-360922b6] {
+				width: 7px;
+				height: 12px;
+				margin-left: 10px;
+				margin-right: 10px;
+			}
+
+			/* 第四部分   配送方式 */
+			.container[data-v-4af0a9dc] {
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex-direction: row;
+				flex-direction: row;
+				-ms-flex-pack: start;
+				justify-content: flex-start;
+				-ms-flex-align: center;
+				align-items: center;
+				background-color: #fff;
+				padding: 15px 0 15px 0;
+			}
+
+			.title[data-v-4af0a9dc] {
+				width: auto;
+				font-size: 16px;
+				color: #4e545d;
+				margin-left: 15px;
+			}
+
+			.subtitle[data-v-4af0a9dc] {
+				-ms-flex: 1;
+				flex: 1;
+				margin-left: 20px;
+				color: #7c7f88;
+				font-size: 13px;
+				text-align: right;
+			}
+
+			.indicator[data-v-4af0a9dc] {
+				width: 7px;
+				height: 12px;
+				margin-left: 10px;
+				margin-right: 10px;
+			}
+
+			/* .发票类型  第五部分 */
+			/* .container[data-v-4af0a9dc] {
+			    display: -ms-flexbox;
+			    display: flex;
+			    -ms-flex-direction: row;
+			    flex-direction: row;
+			    -ms-flex-pack: start;
+			    justify-content: flex-start;
+			    -ms-flex-align: center;
+			    align-items: center;
+			    background-color: #fff;
+			}
+			.title[data-v-4af0a9dc] {
+			    width: auto;
+			    font-size: 16px;
+			    color: #4e545d;
+			    margin-left: 15px;
+			} */
+
+			/* 积分抵扣部分 */
+			.comment-container .bottom-wrapper[data-v-22499656],
+			.comment-container[data-v-22499656] {
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				-ms-flex-pack: start;
+				justify-content: flex-start;
+				-ms-flex-align: stretch;
+				align-items: stretch;
+			}
+
+			.title[data-v-22499656] {
+				width: 100px;
+				font-size: 16px;
+				color: #4e545d;
+				margin-left: 14px;
+				margin-top: 15px;
+			}
+
+			.comment-container .bottom-wrapper[data-v-22499656] {
+				height: 80px;
+				margin: 15px;
+			}
+
+			.comment-container .bottom-wrapper textarea[data-v-22499656] {
+				-ms-flex: 1;
+				flex: 1;
+				font-size: 14px;
+				color: #4e545d;
+				background-color: #f7f8fa;
+				padding: 10px;
+				border: none;
+				border-radius: 2px;
+			}
+
+			.neirong {
+				outline: none;
+			}
+			.score-container[data-v-769ecf88] {
+			    background-color: #fff;
+			}
+			.section-header[data-v-131868d4] {
+			    margin-top: 8px;
+			}
+			.score-header[data-v-769ecf88] {
+			    display: -ms-flexbox;
+			    display: flex;
+			    -ms-flex-pack: justify;
+			    justify-content: space-between;
+			    -ms-flex-align: center;
+			    align-items: center;
+			    padding: 15px 15px 0;
+			}
+			.score-header .title[data-v-769ecf88] {
+			    font-size: 16px;
+			    color: #4e545d;
+			}
+			.score-header .score[data-v-769ecf88] {
+			    font-size: 12px;
+			    color: #fa800a;
+			}
+			.score-container .bottom-wrapper[data-v-769ecf88] {
+			    margin: 15px;
+			}
+			.score-container .bottom-wrapper[data-v-769ecf88], .score-container[data-v-769ecf88] {
+			    display: -ms-flexbox;
+			    display: flex;
+			    -ms-flex-direction: column;
+			    flex-direction: column;
+			    -ms-flex-pack: start;
+			    justify-content: flex-start;
+			    -ms-flex-align: stretch;
+			    align-items: stretch;
+			}
+			.score-container .bottom-wrapper input[data-v-769ecf88] {
+			    -ms-flex: 1;
+			    flex: 1;
+			    font-size: 14px;
+			    color: #4e545d;
+			    background-color: #f7f8fa;
+			    padding: 10px;
+			    border: none;
+			    border-radius: 2px;
+			}
+			/* 积分部分上 */
+			.score-container .bottom-wrapper[data-v-769ecf88], .score-container[data-v-769ecf88] {
+			    display: -ms-flexbox;
+			    display: flex;
+			    -ms-flex-direction: column;
+			    flex-direction: column;
+			    -ms-flex-pack: start;
+			    justify-content: flex-start;
+			    -ms-flex-align: stretch;
+			    align-items: stretch;
+			}
+			
+
+			/* 最底部 */
+
+
+			.desc[data-v-131868d4] {
+				background-color: #fff;
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				-ms-flex-pack: start;
+				justify-content: flex-start;
+				-ms-flex-align: stretch;
+				align-items: stretch;
+				padding-top: 10px;
+				padding-bottom: 50px;
+				/* padding-bottom: 50px; */
+			}
+
+			.container[data-v-4a9e384a] {
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex-direction: row;
+				flex-direction: row;
+				-ms-flex-pack: start;
+				justify-content: flex-start;
+				-ms-flex-align: center;
+				align-items: center;
+				background-color: #fff;
+			}
+
+			.title[data-v-4a9e384a] {
+				width: 100px;
+				font-size: 14px;
+				color: #4e545d;
+				margin-left: 17px;
+			}
+
+			.subtitle[data-v-4a9e384a] {
+				-ms-flex: 1;
+				flex: 1;
+				margin-left: 20px;
+				margin-right: 15px;
+				color: #fa800a;
+				font-size: 15px;
+				text-align: right;
+			}
+
+
+			/* 底部按钮部分 */
+			.bottom-wrapper[data-v-131868d4] {
+				position: fixed;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				height: 50px;
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex-direction: row;
+				flex-direction: row;
+				-ms-flex-pack: start;
+				justify-content: flex-start;
+				-ms-flex-align: stretch;
+				align-items: stretch;
+			}
+
+			.amount-wrapper[data-v-131868d4] {
+				-ms-flex: 1;
+				flex: 1;
+				display: -ms-flexbox;
+				display: flex;
+				-ms-flex-direction: row;
+				flex-direction: row;
+				-ms-flex-pack: start;
+				justify-content: flex-start;
+				-ms-flex-align: center;
+				align-items: center;
+				background-color: #fff;
+			}
+
+			.amount[data-v-131868d4] {
+				-ms-flex: 1;
+				flex: 1;
+				font-size: 16px;
+				color: #fa800a;
+				text-align: right;
+				padding-right: 15px;
+			}
+
+			.submit[data-v-131868d4] {
+				width: 150px;
+				height: 50px;
+				border-radius: 0;
+			}
+
+			.primary[data-v-c39673d2] {
+				color: #fff;
+				background-color: #fa800a;
+			}
+
+			.button-item[data-v-c39673d2] {
+				text-align: center;
+				font-size: 16px;
+				border: none;
+				outline: 0;
+			}
+			#address{
+				width: 100%;
+				color: #000000;
+				
+			}
+			#address .title{
+				margin-left: 0.833333rem;
+				margin-bottom: 0.833333rem;
+			}
+			#address .title span{
+				
+				margin-left: 0.833333rem;
+				color: #000000;
+			}
+			#address .address{
+				margin-left: 0.833333rem;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="box">
+			<header data-v-131868d4="" class="mint-header header is-fixed">
+				<div class="mint-header-button is-left">
+					<div data-v-f80bae56="" data-v-131868d4="" class="left-item">
+						<a href="javascript:history.go(-1)"><img data-v-f80bae56="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAABGdBTUEAALGPC/xhBQAAAL1QTFRFAAAA////j4+WipKSjo6VkZGRjY2UkJCQjIyTj4+PjJKSjo6Ui5GRjo6Ti5CQjY2Sio+PjJCQjo6Si5CQjY2Si4+PjY2Rio+TjIyRjo6SjJCQjo6Si4+PjY2Ri4+TjY2Ri4+SjIyQio6SjIyQio6Rio6Pi42Qio2Pio2Qio2Qi42PioyQi42PioyQi42Pi4yQio2Qi4yPio2Qi42PioyQioyPi42QioyPi42Qi4yPio2Qi42PioyQi42QioyPk+ZOBAAAAD50Uk5TAAIiIyQlJicoKSorLC0uLzA1Njc4OTo7PD0+P0BBQkNERUZHSJCR1Nbh4uPk5ebn6Onq6+zw8fLz9PX29/i+TOnQAAAA10lEQVRIx+3URxLCMAwFUAGhl9AJvXcIJfTi+x8LycMB9BcwLND6/Rk7kT/Rf749xdk4hPjS0ZgJ4MsnY8xU76tn9gdX7Wvig5zaexf2+6zaN8TvMmrfvIpPq33rxn6bUvuO+E1C7bt39n5c7fvi1zG1HzzYr6JqPxK/dPT3fbJfRPQLNGU/DxMWWCABe6QlcCQa2o/kAAn0NxD1bCKO3ENWyU8AibZdviSQaF2x9eYHBz4gorp90hkg4YGl8a6lwAUSFSm+Q/6DVcnlDZYxUQGs+//88LwAI74l0PQXLosAAAAASUVORK5CYII="
+						 class="icon"></a>
+					</div>
+				</div>
+				<h1 class="mint-header-title">确认订单</h1>
+				<div class="mint-header-button is-right"></div>
+			</header>
+		</div>
+
+
+		<!-- 添加收货地址 -->
+		<div data-v-f1343698="" data-v-131868d4="" class="container address">
+			<div data-v-f1343698="" class="top-wrapper">
+				<div data-v-f1343698="" class="unselected-wrapper"><label data-v-f1343698="" class="desc" id="address">您还没有收获地址，点击这里添加。</label></div>
+				<img data-v-f1343698="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAYBAMAAAA46dFkAAAABGdBTUEAALGPC/xhBQAAAA9QTFRFAAAA////payzpKu0pKqzD7zVUAAAAAR0Uk5TAAFKnTZ5RNsAAAAsSURBVAjXYxBSZAADFWcBCO1iCKaFXSACjCYUCSDTMHGoOpK4cHfB3Al1NwBi6Q5b1PFeOQAAAABJRU5ErkJggg=="
+				 class="indicator">
+			</div> <img data-v-f1343698="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAAEBAMAAAAjc6c0AAAABGdBTUEAALGPC/xhBQAAADBQTFRFGI/JLJnOZbXbstrt5Vp+6GiJ6YA+64tO7Pb77pGp8at/98jU+NW//fL1/vXw////iKP+mAAAAHtJREFUOMtjYIAA4f9I4FUaBqhBlr/pggGikeWbGDDAqPlYzWfqRxL+U4ZhbNZ7JPnfIRjGet5Hkv8sgOHsUfOxms9ojyT8bxmGsennkeT/TsEw1nU/kvwPBQxnj5qP3XwN5FxwHDMXrUOW34qZi+Yiyxti5tJR89HNBwDF5y+m+sNlKQAAAABJRU5ErkJggg=="
+			 class="line-wrapper">
+		</div>
+		
+		<!--  -->
+		<!-- 商品数量  第三部分 -->
+		<div data-v-360922b6="" data-v-131868d4="" class="container goods section-header">
+			<div data-v-360922b6="" class="photo-wrapper"><div class="wrap"></div></div>
+			<div data-v-360922b6="" class="right-wrapper"><label data-v-360922b6="" class="subtitle" id="amount">共3件</label> <img
+				 data-v-360922b6="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAYBAMAAAA46dFkAAAABGdBTUEAALGPC/xhBQAAAA9QTFRFAAAA////payzpKu0pKqzD7zVUAAAAAR0Uk5TAAFKnTZ5RNsAAAAsSURBVAjXYxBSZAADFWcBCO1iCKaFXSACjCYUCSDTMHGoOpK4cHfB3Al1NwBi6Q5b1PFeOQAAAABJRU5ErkJggg=="
+				 class="indicator"></div>
+		</div>
+
+
+
+		<!-- 第四部分  配送方式 -->
+		<div data-v-4af0a9dc="" data-v-131868d4="" class="container item"><label data-v-4af0a9dc="" class="title">配送方式</label>
+			<label data-v-4af0a9dc="" class="subtitle">请选择配送方式</label>
+			<img data-v-4af0a9dc="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAYBAMAAAA46dFkAAAABGdBTUEAALGPC/xhBQAAAA9QTFRFAAAA////payzpKu0pKqzD7zVUAAAAAR0Uk5TAAFKnTZ5RNsAAAAsSURBVAjXYxBSZAADFWcBCO1iCKaFXSACjCYUCSDTMHGoOpK4cHfB3Al1NwBi6Q5b1PFeOQAAAABJRU5ErkJggg=="
+			 class="indicator">
+		</div>
+		<div style="width: 100%;height: 10px;background: rgb(240,242,245);"></div>
+
+
+		<!-- 发票类型  第五部分 -->
+		<div data-v-4af0a9dc="" data-v-131868d4="" class="container item section-header"><label data-v-4af0a9dc="" class="title">发票类型</label>
+			<!----> <label data-v-4af0a9dc="" class="subtitle">请选择发票类型</label> <img data-v-4af0a9dc="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAYBAMAAAA46dFkAAAABGdBTUEAALGPC/xhBQAAAA9QTFRFAAAA////payzpKu0pKqzD7zVUAAAAAR0Uk5TAAFKnTZ5RNsAAAAsSURBVAjXYxBSZAADFWcBCO1iCKaFXSACjCYUCSDTMHGoOpK4cHfB3Al1NwBi6Q5b1PFeOQAAAABJRU5ErkJggg=="
+			 class="indicator"></div>
+		<div style="width: 100%;height: 10px;background: rgb(240,242,245);"></div>
+
+		<!-- 第六部分  使用红包 -->
+		<div data-v-4af0a9dc="" data-v-131868d4="" class="container item section-header"><label data-v-4af0a9dc="" class="title">使用红包</label>
+			<!----> <label data-v-4af0a9dc="" class="subtitle">无可用</label> <img data-v-4af0a9dc="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAYBAMAAAA46dFkAAAABGdBTUEAALGPC/xhBQAAAA9QTFRFAAAA////payzpKu0pKqzD7zVUAAAAAR0Uk5TAAFKnTZ5RNsAAAAsSURBVAjXYxBSZAADFWcBCO1iCKaFXSACjCYUCSDTMHGoOpK4cHfB3Al1NwBi6Q5b1PFeOQAAAABJRU5ErkJggg=="
+			 class="indicator"></div>
+		<div style="width: 100%;height: 10px;background: rgb(240,242,245);"></div>
+
+		<!-- 积分抵扣部分 -->
+		<div data-v-769ecf88="" data-v-131868d4="" class="score-container section-header"><div data-v-769ecf88="" class="score-header"><label data-v-769ecf88="" class="title">积分抵扣：</label> <label data-v-769ecf88="" class="score">无可用积分</label></div> <div data-v-769ecf88="" class="bottom-wrapper"><input data-v-769ecf88="" disabled="disabled" placeholder="在此输入积分"></div></div>
+		
+		<div style="width: 100%;height: 10px;background: rgb(240,242,245);"></div>
+		
+		<!-- 买家留言 -->
+		<div data-v-22499656="" data-v-131868d4="" class="comment-container comment section-header"><label data-v-22499656=""
+			 class="title">买家留言：</label>
+			<div data-v-22499656="" class="bottom-wrapper"><textarea data-v-22499656="" placeholder="选填：对本次交易的说明（建议填写已和卖家协商一致的内容）"></textarea></div>
+		</div>
+		<div style="width: 100%;height: 10px;background: rgb(240,242,245);"></div>
+		<!-- 最底部 -->
+		<div data-v-131868d4="" class="desc section-header section-footer">
+			<div data-v-4a9e384a="" data-v-131868d4="" class="container desc-item"><label data-v-4a9e384a="" class="title">商品金额</label>
+				<label data-v-4a9e384a="" class="subtitle" id="price">￥ 1773.60</label></div>
+			<div data-v-4a9e384a="" data-v-131868d4="" class="container desc-item"><label data-v-4a9e384a="" class="title">运费</label>
+				<label data-v-4a9e384a="" class="subtitle">免运费</label></div>
+			<div data-v-4a9e384a="" data-v-131868d4="" class="container desc-item"><label data-v-4a9e384a="" class="title">红包</label>
+				<label data-v-4a9e384a="" class="subtitle">-￥ 0.00</label></div>
+			<div data-v-4a9e384a="" data-v-131868d4="" class="container desc-item"><label data-v-4a9e384a="" class="title">积分</label>
+				<label data-v-4a9e384a="" class="subtitle">-￥ 0.00</label></div>
+			<div style="width: 100%;height: 10px;background: rgb(240,242,245); margin-top: 15px;"></div>
+
+		</div>
+
+
+
+
+		<!-- 底部按钮 提交订单按钮-->
+		<div data-v-131868d4="" class="bottom-wrapper">
+			<div data-v-131868d4="" class="amount-wrapper"><label data-v-131868d4="" class="amount">实付款: ￥ 1773.60</label></div>
+			<button data-v-c39673d2="" data-v-131868d4="" class="button-item submit primary"><label data-v-c39673d2="" id="submit">提交订单</label></button>
+		</div>
+
+
+	</body>
+</html>
+<script type="text/html" id="goods-price">
+	{{each  as item index}}
+		<img data-v-360922b6="" src="{{item.thumb}}"/>
+	{{/each}}
+</script>
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
+<script src="http://cdn.staticfile.org/artTemplate.js/3.0.1/template.js"></script>
+<script src="js/layout.js"></script>
+
+<script src="js/jquery.url.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	
+	var goodsInfo = jQuery.url.param("goodsInfo")
+	var total_price = jQuery.url.param("total_price")
+	console.log(total_price)
+	var amount = jQuery.url.param("amount")
+	goodsInfo = JSON.parse(goodsInfo);
+	console.log( goodsInfo);
+	
+	// 获取总价并更新价格 
+	$(".amount").html("实付款: " + total_price)
+	$("#price").html( total_price)
+	$("#amount").html("共" +  amount + "件")
+	
+	var str = template("cartList", goodsInfo);
+	$(".photo-wrapper").html(str);
+	
+
+	// var templateURL = "template9.html"
+	var JSONdata = goodsInfo
+	var str1 = template("goods-price",JSONdata);
+	$(".photo-wrapper").html(str1)
+// 	$.get(templateURL,function(goodsInfo){
+// 		
+// 		// 编译模板 
+// 		var render = template.compile(goodsInfo)
+// 		var str = render(JSONdata)
+// 		
+// 		$(".photo-wrapper").html(str)
+// 
+// 	})
+	
+	$.ajax({
+		 url:"http://api.shenzhou888.com.cn/v2/ecapi.consignee.list",
+		 headers: {
+			"X-ECAPI-Authorization": localStorage.getItem("userToken")
+		 },
+		 
+		 type:"post",
+		 dataType:"json",
+		 success:function(data){
+			 console.log(data);
+			
+			$("#address").html('<p class="title">'+ data.consignees[0].name +'<span>'+ data.consignees[0].mobile +'</span></p><p class="address">'+ data.consignees[0].address +'</p>')
+		
+		 }
+	})
+	
+	$("#submit").on("click" , function(){
+		$.toast('订单已提交')
+	})
+	
+	$(".unselected-wrapper .desc").on("click" , function(){
+		 
+		$.ajax({
+			 url:"http://api.shenzhou888.com.cn/v2/ecapi.consignee.add",
+			 headers: {
+				"X-ECAPI-Authorization": localStorage.getItem("userToken")
+			 },
+			 data : {
+				name :  localStorage.getItem("username") ,
+				region : 1 ,
+				address : "北京网络职业学院" ,
+				zip_code : 1 ,
+				tel : 1 ,
+				mobile : 1329397525 ,
+				is_default : 1
+
+			 },
+			 type:"post",
+			 dataType:"json",
+			 success:function(data){
+				 console.log(data);
+			
+			 }
+		})
+		window.location.refresh();
+	})
+	
+</script>

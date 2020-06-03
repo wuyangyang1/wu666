@@ -1,0 +1,43 @@
+购物流程：
+1、点击添加购物车，首先检查token判断用户有没有登录，
+     没登录，跳转到登录页面
+     已登录，获取 usertoken，goodsid,amount，调【添加到购物车】接口http://api.ecshop.com/v2/ecapi.cart.add 添加到数据库，将该商品与用户token捆绑。然后跳转购物车页面或弹窗提示“已添加购物车”然后继续留在当前页面
+
+2。购物车页面
+    2.1 页面加载完成后，判断用户是否登录，没登录，跳转到登录页面。已登录，调用【购物车更新】接口http://api.ecshop.com/v2/ecapi.cart.get，获取上一步与用户token捆绑的购物车列表数据，例：
+       var cartGoods= data.goods_groups[0].goods;
+       var goodsList = cartGoods.map(function(item){
+            item.selected = true;
+            return item;
+       })
+        goodsList为将goods数组中所有数组项处理后(增加一个新属性selected，用来标识该商品是否被选中 )得到的新数组，包含所有购物车商品；如：[{…}, {…}]
+        0: { goods_id: 14, id: 91, amount: 1, property: "", price: 33.9,  …, selected:true }
+        1: { goods_id: 4, id: 89, amount: 1, property: "", price: 115.2,  … , selected:true}
+        ...
+       在上一步的数组上，渲染页面生成购物车列表。
+       当用户点击取消或全选按钮，我们就更改按钮对应的商品的selected属性，然后重新计算价格。
+
+ES5.map()  函数用法：
+https://blog.csdn.net/hehepeng123/article/details/88294017
+
+    2.2  如果有需要，计算商品总数与总价
+          计算总数量：
+    function  getCheckedGoodsCount(cartGoods) {
+    var checkedGoodsCount = 0;
+    cartGoods.forEach(function (item) {
+      if (item.selected === true) {
+        checkedGoodsCount += item.amount;
+      }
+    });
+    return checkedGoodsCount;
+  }
+       计算总价
+  function  getCheckedGoodsAmount (cartGoods) {
+    var checkedGoodsCount = 0;
+    cartGoods.forEach(function (item) {
+      if (item.checked === true) {
+        checkedGoodsCount += item.price * item.amount;
+      }
+    });
+    return checkedGoodsCount;
+  }

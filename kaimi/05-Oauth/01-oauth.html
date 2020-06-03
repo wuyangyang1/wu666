@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="获取授权" id="oauth">
+	</body>
+</html>
+<script>
+	var appid="wxc425aadb855f3982";
+	var callback = "http://31i52f6891.wicp.vip/05-Oauth/callback.php";
+	var state = "db168";
+	oauth.onclick = function(){
+		window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="+appid+"&redirect_uri="+ callback+"&response_type=code&scope=snsapi_userinfo&state="+state+"#wechat_redirect"
+	}
+	
+	
+	
+
+</script>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/global.css" />
+		<link rel="stylesheet" type="text/css" href="css/login.css" />
+		<link rel="stylesheet" type="text/css" href="statics/fonts/iconfont.css" />
+		<title>用户登录页</title>
+	</head>
+	<body>
+		<!-- 页头区域：返回菜单 -->
+		<header class="dis-box header-menu b-color color-whie"><a class="" href="javascript:history.go(-1)"><i class="iconfont icon-jiantou"></i></a>
+			<h3 class="box-flex">登录</h3>
+			<p><a href="#"><i class="iconfont icon-home"></i></a></p>
+		</header>
+		<div class="padding-all b-color-f">
+			<form name="formLogin" action="#" method="post" class="validforms">
+				<div class="ect-bg-colorf">
+					<section>
+						<ul class="register-list-box">
+							<li class="dis-box user-register-box">
+								<div class="box-flex reg-left-input"><input placeholder="用户名/手机号" name="username" type="text" id="username"
+									 maxlength="20"></div>
+							</li>
+							<li class="dis-box user-register-box input-text item-password">
+								<input class="txt-password" id="txt-password" type="password" name="password" autocomplete="off" placeholder="请输入密码">
+								<b class="tp-btn btn-off"></b>
+							</li>
+						</ul>
+					</section>
+				</div>
+				<p class="ect-checkbox ect-padding-tb ect-margin-tb ect-margin-bottom0">
+					<input type="checkbox" value="1" name="remember" id="remember" class="l-checkbox">
+					<label for="remember">记住本次登录。<i></i></label>
+				</p>
+				<div class=" ect-padding-tb">
+					<button type="submit" class="btn-submit" value="">立即登录</button>
+				</div>
+			</form>
+			<p class="text-right ect-margin-bottom0 n-login-x">
+				<a href="#">忘记密码</a>
+				<a href="#">免费注册</a>
+			</p>
+			<div class="other-login">
+				<h4 class="title-hrbg"><span id="zhang">使用微信账号登录</span>
+					<hr>
+				</h4>
+				<ul class="dis-box">
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/global.js"></script>
+<script type="text/javascript">
+	$("button[class=btn-submit]").on("click",function(evt){
+		evt.preventDefault();
+		$.ajax({
+			url:"http://api.shenzhou888.com.cn/v2/ecapi.auth.signin",
+			data:{
+				username:$("#username").val(),
+				password:$("#txt-password").val()
+			},
+			type:"post",
+			dataType:"json",
+			success:function(data){
+				if( data.error_code !== 0 ){
+					//弹窗提示错误消息
+					// $.toast.prototype.defaults.duration = 30000;
+					$.toast(data.error_desc,"cancel");
+				}else{
+					localStorage.setItem("userToken",data.token);
+					localStorage.setItem("username",data.user.username);
+					//判断一下，哪里来的回哪去
+					window.location.href = "goods.html?goodsid=4";
+				}				
+			}
+		})
+	})
+	var appid="wxc425aadb855f3982";
+		var callback = "http://31i52f6891.wicp.vip/05-Oauth/callback.php";
+		var state = "db168";
+	$("#zhang").on("click",function(){
+			window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="+appid+"&redirect_uri="+ callback+"&response_type=code&scope=snsapi_userinfo&state="+state+"#wechat_redirect"
+	})
+</script>

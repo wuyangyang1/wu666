@@ -1,0 +1,204 @@
+/*头部*/
+.header-menu {
+	height: 3.833333rem;
+	line-height: 3.833333rem;
+	padding: 0 0.5rem;
+}
+
+.header-menu a {
+	color: #fff;
+}
+
+.header-menu i {
+	font-size: 2.083333rem;
+}
+
+.header-menu i.icon-back {
+	font-size: 0.25rem
+}
+
+.header-menu i.icon-13caidan {}
+
+.header-menu h3 {
+	font-size: 1.666666rem;
+	text-align: center;
+	line-height: 3.833333rem;
+}
+
+/*login*/
+.ect-checkbox label i {
+	border-radius: 4px !important
+}
+
+.ect-radio input:checked+label i,
+.ect-checkbox input:checked+label i {
+	color: #F00;
+	background: url(../statics/img/radio.png) center center #1cbb7f no-repeat;
+	background-size: 80%;
+	border: none;
+	width: 1.333333rem;
+	height: 1.333333rem;
+}
+
+.ect-checkbox label i {
+	border-radius: 4px !important
+}
+
+.ect-radio label i,
+.ect-checkbox label i {
+	width: 1.166666rem;
+	height: 1.166666rem;
+	margin-right: 0.3em;
+	display: block;
+	float: left;
+	margin-top: 0.1em;
+	border-radius: 100%;
+	background: rgba(255, 255, 255, 0);
+	border: 1px solid #bbb
+}
+
+.ect-radio input[type=radio],
+.ect-checkbox input[type=checkbox] {
+	display: none
+}
+
+.ect-checkbox label {
+	display: inline-block;
+	max-width: 100%;
+	color: #666;
+	font-size: 1.083333rem;
+}
+
+.ect-checkbox {
+	font-size: 1.083333rem;
+}
+
+.ect-margin-bottom0 a {
+	color: #666
+}
+
+.n-activity-list h5 {
+	font-size: 1.5rem;
+	color: #777;
+	border-bottom: 1px solid #f6f6f9;
+	padding: 0.3rem 0 0.6rem 0
+}
+
+.n-activity-list p {
+	font-size: 1.5rem;
+}
+
+.n-activity-list p a i.zk {
+	font-style: normal;
+	background: #1cbb7f;
+	padding: 0.1rem 0.6rem;
+	color: #fff;
+	border-radius: 1.666666rem;
+	font-size: 0.916666rem;
+}
+
+.user-register-list {
+	width: 5.833333rem;
+	height: 2.5rem;
+	line-height: 2.5rem;
+	border-left: 1px solid #f6f6f9;
+	margin-left: 0.833333rem;
+	padding-left: 0.833333rem;
+	text-align: center;
+	font-size: 1.166666rem;
+}
+
+.user-register-list2 {
+	width: 10.833333rem;
+	height: 2.5rem;
+	line-height: 2.5rem;
+	border-left: 1px solid #f6f6f9;
+	margin-left: 0.833333rem;
+	padding-left: 0.833333rem;
+	text-align: center;
+	font-size: 1.25rem;
+	color: #666
+}
+
+.user-register-box {
+	padding: 1rem 0rem;
+	border-radius: 0.5rem;
+	border-bottom: 1px solid #f6f6f9
+}
+
+.user-register-box input {
+	padding-left: 1rem;
+	border: 0;
+	outline: 0 none;
+	height: 3rem;
+	line-height: 2rem;
+	padding: .5rem 0;
+	box-sizing: border-box;
+	width: 100%;
+	font-size: 1.333333rem;
+	padding-right: 1rem;
+	background: #fbfbe4;
+}
+
+.code-register {
+	font-style: italic;
+	color: #1cbb7f;
+	border: 0;
+	padding: 2px 3px;
+	letter-spacing: 3px;
+	font-weight: bolder
+}
+
+.unchanged {
+	border: 0
+}
+
+.item-password .tp-btn {
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 0.9rem;
+	width: 5rem;
+	height: 2.916666rem
+}
+
+.item-password .btn-off {
+	background: url(../statics/img/as.png)no-repeat;
+	background-size: 4.166666rem 2.916666rem
+}
+
+.item-password .btn-on {
+	background: url(../statics/img/ab.png)no-repeat;
+	background-size: 4.166666rem 2.916666rem
+}
+
+.n-login-x a {
+	font-size: 1.083333rem;
+	clear: both
+}
+
+.ect-checkbox a {
+	font-size: 1.166666rem;
+}
+/*顶部高度*/
+.ect-header{height:2.5em; position:relative;}
+.ect-header span{font-size: 1.4em;position: absolute;left: 2.4em;right: 3em;top: 0.3em;}
+.ect-header a{  width: 2.5em;height: 2.5em;}
+.ect-text-left{text-align:left;}
+.ect-border-none{border:none;}
+.ect-margin-lr{margin-left:0.6em; margin-right:0.6em;}
+.ect-margin-tb{  margin-top: 0.6em;margin-bottom: 0.6em;}
+.ect-padding-lr{padding-left:0.6em; padding-right:0.6em;}
+.ect-padding-tb{padding-top:0.6em; padding-bottom:0.6em;}
+.ect-border-radius100{ border-radius: 100%; -moz-border-radius: 100%; -webkit-border-radius: 100%; -o-border-radius: 100%;}
+.ect-border-radius0{ border-radius:0; -moz-border-radius:0; -webkit-border-radius:0; -o-border-radius:0;}
+.ect-icon-color{color:silver;}
+.ect-diaplay-box{display: -webkit-box;display: -moz-box;display: -ms-box;display: box;}
+.ect-box-flex{-webkit-box-flex: 1;-moz-box-flex: 1;-ms-box-flex: 1;box-flex: 1; display:block; width:100%;}
+.ect-margin-bottom0{margin-bottom:0 !important;}
+.select-one .ect-select input{opacity: 0;position:absolute;left:0;width: 90%;height: 90%;}
+.select-one li{position:relative;}
+/*title-hrbg*/
+h4.title-hrbg {font-size: 1.3rem;position: relative; z-index:1; height: 4rem;line-height: 4rem;overflow: hidden;color: #888;text-align: center;margin-top: 4rem;}
+h4.title-hrbg span {background: #fff;padding: 1rem .6rem;font-size: 1.5rem; z-index: 10;}
+h4.title-hrbg hr {background: #f6f6f9;height: 1px;border: 0;position: absolute;left: 0;right: 0;top: 50%;margin-top: 1px;z-index: -1;}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>	
+<script>
+	axios({
+  method: 'post',
+  url: 'http://api.shenzhou888.com.cn/v2/ecapi.category.list',
+  data: {
+  	page: 1,
+  	per_page: 20,
+  },
+ dataType: "json"
+}).then(function(response){
+	console.log(response);
+})
+</script>

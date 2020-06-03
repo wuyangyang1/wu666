@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/global.css" />
+		<link rel="stylesheet" type="text/css" href="css/category.css" />
+		<link rel="stylesheet" type="text/css" href="statics/fonts/iconfont.css" />
+		<title></title>
+	</head>
+	<body>
+		<div class="loding">
+			<img src="images/loading.gif" alt="">
+		</div>
+		<div class="con">
+			<!-- 页头搜索栏 -->
+			<div class="category-top">
+				<div class="search">
+					<div class="text-all text-all-back j-text-all">
+						<div class="input-text n-input-text i-search-input">
+							<a class="a-search-input j-search-input" href="javascript:void(0)"></a>
+							<i class="iconfont icon-sousuo"></i>
+							<input type="text" placeholder="请输入您搜索的关键词!">
+							<i class="iconfont icon-guanbi is-null j-is-null"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 商品分类导航 -->
+			<div class="product-list">
+				<!-- 左侧大分类 -->
+				<div class="menu-left" id="menu-left">
+					<ul>
+<!-- 						<li class="active" data-index=1>电脑</li>
+						<li data-index=2>通讯</li>
+						<li data-index=3>日化</li> -->
+					</ul>
+				</div>
+				<!-- 右侧小分类 -->
+				<section>
+ 				<div class="menu-right padding-all">
+					<h5>涤王</h5>
+					<ul>
+<!--				<li class="w-3"><a href="#"></a><img src="http://localhost:8085/data/attached/images/201805/thumb_img/3_thumb_G_1526429781740.jpg"><span>手机</span></li> -->
+					</ul>
+				</div>
+				</section>
+			</div>
+		</div>
+		<!-- 页面底部导航栏 -->
+		<footer class="footer-nav dis-box">
+			<a href="#" class="box-flex nav-list">
+				<i class="nav-box i-home"></i><span>首页</span>
+			</a>
+			<a href="#" class="box-flex nav-list active">
+				<i class="nav-box i-cate"></i><span>分类</span>
+			</a>
+
+			<a href="#" class="box-flex position-rel nav-list">
+				<i class="nav-box i-flow"></i><span>购物车</span>
+			</a>
+			<a href="#" class="box-flex nav-list">
+				<i class="nav-box i-user"></i><span>我的</span>
+			</a>
+		</footer>
+		<!-- 隐藏的搜索框 -->
+		<div class="search-div ts-3">
+			<section class="search">
+				<form action="/index.php?m=default&amp;c=category&amp;a=index&amp;u=0" method="post">
+					<div class="text-all dis-box j-text-all">
+						<a class="a-icon-back j-close-search" href="javascript:history.go(-1)"><i class="iconfont icon-jiantou is-left-font"></i></a>
+						<div class="box-flex input-text">
+							<input class="j-input-text" type="text" name="name" placeholder="请输入搜索关键词！" id="newinput">
+							<i class="iconfont icon-guanbi2 is-null j-is-null"></i>
+						</div>
+						<button type="submit" class="btn-submit">搜索</button>
+					</div>
+				</form>
+			</section>
+			<section class="search-con">
+				<div class="swiper-scroll history-search swiper-container-vertical swiper-container-free-mode">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide swiper-slide-active">
+							<p>
+								<label class="fl">热门搜索</label>
+							</p>
+							<ul class="hot-search a-text-more">
+							</ul>
+							<p class="hos-search">
+								<label class="fl">最近搜索</label>
+								<span class="fr" onclick="javascript:clearHistroy();"><i class="iconfont icon-xiao10 is-xiao10 jian-top fr"></i></span>
+							</p>
+
+							<ul class="hot-search a-text-more a-text-one" id="search_histroy">
+							</ul>
+						</div>
+					</div>
+					<div class="swiper-scrollbar" style="opacity: 0; transition-duration: 400ms;">
+						<div class="swiper-scrollbar-drag" style="transition-duration: 0ms;"></div>
+					</div>
+				</div>
+			</section>
+			<footer class="close-search j-close-search">
+				点击关闭
+			</footer>
+		</div>
+	</body>
+</html>
+<script type="text/html" id="menu_left">
+	{{ each categories as item index }}
+		{{ if index==0 }}
+			<li class="active" data-id={{item.id}}>{{ item.name }}</li>
+		{{else}}
+			<li data-id={{item.id}}>{{ item.name }}</li>
+		{{/if}}
+	{{ /each }}
+</script>
+<script type="text/html" id="menu_right">
+	{{ each products as item index}}
+		<li class="w-3"><a href="goods.html?goodsid={{ item.id }}&like={{is_liked}}"></a><img src="{{item.default_photo.thumb}}"><span>{{ item.name }}</span></li>
+	{{ /each }}
+</script>
+
+<script src="http://cdn.staticfile.org/artTemplate.js/3.0.1/template.js"></script>
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/main.js"></script>
+<script type="text/javascript">
+	var handler = function(e) { //禁止浏览器默认行为
+		e.preventDefault();
+	};
+
+	/*点击弹出搜索层*/
+	$(".j-search-input").click(function() {
+		//document.addEventListener("touchmove", handler, false);
+		$(".search-div,.new-maxbox").addClass("active");
+		// $('#newinput').focus();
+	});
+	/*关闭搜索层*/
+	$(".j-close-search").click(function() {
+		//document.removeEventListener("touchmove", handler, false);
+		$(".search-div,.new-maxbox").removeClass("active");
+	});
+ 	$.ajax({
+		url: "http://api.shenzhou888.com.cn/v2/ecapi.category.list",
+		type: "post",
+		data: {
+			page: 1,
+			per_page: 20,
+		},
+		dataType: "json",
+		beforeSend:function(){
+			$(".con").hide();
+			$(".loding").hide();
+		},
+		success: function(data) {
+			$(".con").show();
+			$(".loding").hide();
+			console.log(data);
+			var str1 = template("menu_left", data);
+			$("#menu-left ul").html(str1);
+			// 给渲染完的li添加点击事件，再一次ajax请求该分类下的所有商品
+			$("#menu-left ul li").on("click",function(){
+				//修改右边的标题
+				$(".product-list section .menu-right h5").html( $(this).text() );
+				// 样式切换
+				$(this).addClass("active").siblings().removeClass("active");
+				//ajax请求
+					$.ajax({
+						url: "http://api.shenzhou888.com.cn/v2/ecapi.product.list",
+						type: "post",
+						data: {
+							category: $(this).attr("data-id"), //分类的id
+							page: 1,
+							per_page: 20,
+							sort_key: 0,
+							sort_value: 0
+						},
+						dataType: "json",
+
+						success: function(data) {
+							console.log(data);
+							var str2 = template("menu_right",data);
+							$(".product-list section .menu-right ul").html(str2);
+						}
+					})				
+			})
+		}
+	}) 
+	// 返回某分类下的商品
+	$.ajax({
+		url: "http://api.shenzhou888.com.cn/v2/ecapi.product.list",
+		type: "post",
+		data: {
+			category: 1,
+			page: 1,
+			per_page: 20,
+			sort_key: 0,
+			sort_value: 0
+		},
+		dataType: "json",
+		success: function(data) {
+			console.log(data);
+			var str2 = template("menu_right",data);
+			$(".product-list section .menu-right ul").html(str2);
+		}
+	})
+</script>

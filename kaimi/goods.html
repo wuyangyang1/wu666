@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+
+
+		<link rel="stylesheet" type="text/css" href="statics/fonts/iconfont.css" />
+		<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">   
+		<link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css">
+		<link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.1/css/jquery-weui.min.css">		<link rel="stylesheet" type="text/css" href="css/global.css" />	
+		<link rel="stylesheet" type="text/css" href="css/goods.css" />
+		<title>商品详情页</title>
+	</head>
+	<body>
+		<div class="con">
+			<!-- 页头区域：返回菜单 -->
+			<div class="goods-box">
+				<header class="dis-box header-menu-1 b-color color-whie goods-fixed ts-3">
+					<a class="" href="javascript:history.go(-1)">
+						<div class="goods-left-jiat"><i class="iconfont icon-jiantou is-con"></i></div>
+					</a>
+				</header>
+			</div>
+			<!-- 轮播图区域 -->
+			<div class="goods-photo">
+				<!-- <ul class="swiper-wrapper">
+					<li>
+						<img src="images/index-more-img1.gif" alt="" width="375" height="100%">
+					</li>
+				</ul> -->
+				<div class="swiper-container" id="box1">
+				    <div class="swiper-wrapper">
+				      <!--  <div class="swiper-slide">Slide 1</div>
+				        <div class="swiper-slide">Slide 2</div>
+				        <div class="swiper-slide">Slide 3</div> -->
+				    </div>
+				    <!-- 如果需要分页器 -->
+				    <div class="swiper-pagination"></div>
+				</div>
+			</div>
+			<!-- 产品信息区域：价格，数量、服务条款、评价 -->
+			<div class="goods-info">
+				<!-- 商品名称 -->
+				<section class="goods-title b-color-f padding-all ">
+					<div class="dis-box">
+						<h3 class="box-flex"></h3>
+
+						<span class="heart j-heart " id="ECS_COLLECT"><i class="ts-2"></i><em class="ts-2">收藏</em></span>
+					</div>
+				</section>
+				<!-- 价格 -->
+				<section class="goods-price padding-all b-color-f">
+
+				</section>
+				<!-- 服务信息 -->
+				<section class="padding-all b-color-f1 goods-service">
+					<div class="dis-box">
+						<div class="box-flex">
+							<div class="dis-box">
+								<p class="box-flex t-goods2">本服务由微商城提供售后服务与产品支持</p>
+								<i class="iconfont icon-102 goods-min-icon"></i>
+							</div>
+							<div class="dis-box m-top08 g-r-rule goods-service-list">
+								<p class="box-flex t-remark3">
+									<em class="fl em-promotion"><i class="iconfont icon-weibiaoti11"></i></em><span class="fl">正品保证</span></p>
+								<p class="box-flex t-remark3">
+									<em class="fl em-promotion"><i class="iconfont icon-daifukuan"></i></em><span class="fl">货到付款</span></p>
+								<p class="box-flex t-remark3">
+									<em class="fl em-promotion"><i class="iconfont icon-7tianwuliyoutuihuo"></i></em><span class="fl">7天退货</span></p>
+								<p class="box-flex t-remark3">
+									<em class="fl em-promotion"><i class="iconfont icon-taobaojisutuikuan"></i></em><span class="fl">极速达</span></p>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- 购买数量 -->
+				<section class="s-g-attr-con swiper-scroll b-color-f padding-all m-top1px">
+					<h4 class="t-remark">数量</h4>
+					<div class="div-num dis-box m-top08">
+						<a class="num-less"></a>
+						<input class="box-flex" type="text" value="1" onkeyup="value=value.replace(/[^\d]/g,'')" name="number" id="goods_number" autocomplete="off">
+						<a class="num-plus"></a>
+					</div>
+				</section>
+				<!-- 商品评价 -->
+				<section class="m-top10 goods-evaluation">
+					<a href="#">
+						<div class="dis-box padding-all b-color-f  g-evaluation-title">
+							<label class="t-remark g-t-temark">用户评价</label>
+							<div class="box-flex t-goods1">好评率 <em class="t-first">100%</em></div>
+							<div class="t-goods1"><em class="t-first"></em><span class="t-jiantou">1人评论<i class="iconfont icon-jiantou tf-180"></i></span></div>
+						</div>
+					</a>
+					<div class="m-top1px b-color-f g-evaluation-con">
+						<div class="of-hidden evaluation-list padding-all-1 n-list-pl">
+							<div class="of-hidden">
+								<p class="fl"><span class="grade-star g-star-1 fl"></span><em class="t-remark fl">haotata</em></p>
+								<p class="fr t-remark">2020-05-21 14:27:53</p>
+							</div>
+							<p class="clear m-top06 t-goods1">东西非常好，音质出色，价廉物美</p>
+							<p style="display:none;" class="clear m-top08 t-remark">颜色分类：70cm、5144蓝色</p>
+						</div>
+					</div>
+					<div class="m-top1px b-color-f g-evaluation-con">
+						<div class="of-hidden evaluation-list padding-all-1 n-list-pl">
+							<div class="of-hidden">
+								<p class="fl"><span class="grade-star g-star-5 fl"></span><em class="t-remark fl">haotata</em></p>
+								<p class="fr t-remark">2020-05-21 14:27:53</p>
+							</div>
+							<p class="clear m-top06 t-goods1">东西非常好，音质出色，价廉物美</p>
+							<p style="display:none;" class="clear m-top08 t-remark">颜色分类：70cm、5144蓝色</p>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+		<!-- 商品详情 -->
+		<div class="con">
+			<div id="n-goods" class="goods-info of-hidden ect-tab b-color-f j-goods-info j-ect-tab ts-3" style="margin-bottom: 5.333333rem;margin-top:2px;">
+			<section class="swiper-slide swiper-slide-active" style="width: 375px;">
+				<div class="padding-all" id="goods-desc">
+					<div class="no-div-message">
+						<i class="iconfont icon-biaoqingleiben"></i>
+						<p>亲，此处没有内容～！</p>
+					</div>
+				</div>
+			</section>
+			</div>
+		</div>
+		<!-- 底部菜单：立即购买，加入购物车 -->
+		<div class="filter-btn dis-box">
+	<a class="filter-btn-kefu filter-btn-a" href="#"><i class="iconfont icon-kefu"></i><em>客服</em></a>
+	<a href="cart.html" class="filter-btn-flow filter-btn-a"><i class="iconfont icon-gouwuche"></i><sup class="b-color" id="total_number">0</sup><em>购物车</em></a>
+	<a type="button" id="addCart" class="btn-cart box-flex n-iphone5-top1 j-goods-attr j-show-div">加入购物车</a>
+	<a type="button" id="buynow" class="btn-submit box-flex n-iphone5-top1 j-goods-attr j-show-div">立即购买</a>
+		</div>
+	</body>
+</html>
+<!-- 商品价格信息模板 -->
+<script type="text/html" id="goods-price">
+	<p class="p-price">
+		<span class="t-first">￥{{current_price}}元 </span>
+		<em class="em-promotion">积分可抵现</em>
+	</p>
+	<p class="p-market">
+		市场价 <del>￥{{price}}元</del>
+	</p>
+	<p class=" dis-box g-p-tthree m-top04">
+		<span class="box-flex text-left">销量：{{ sales_count }}</span>
+		<span class="box-flex text-right">库存: {{ good_stock }}</span>
+	</p>
+</script>
+<script src="http://cdn.staticfile.org/artTemplate.js/3.0.1/template.js"></script>
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.1/js/jquery-weui.min.js"></script>
+<script src="https://unpkg.com/swiper/js/swiper.min.js"> </script>
+<script src="js/layout.js"></script>
+<script src="js/jquery.url.js"></script>
+<script src="js/global.js"></script>
+<script type="text/javascript">
+	$(".num-less").on("click",function(evt){
+		evt.preventDefault()
+		if( $(this)[0].nextElementSibling.value<=1 ){
+			
+		}else{
+			$(this)[0].nextElementSibling.value--;
+		}
+	})
+	
+window.onload = function(){
+	var goodsid = jQuery.url.param("goodsid");
+	//网页加载完成后，首先检查localStorage中userToken，判断用户是否登录，然后执行收藏、购物车更新
+	if( !checkuserLogin() ){
+		$.toast("请登录后才能收藏或购买商品","text");
+	}
+	if(localStorage.getItem(goodsid)){
+		$(".heart").addClass("active");
+	}
+	$.ajax({
+		url:"http://api.shenzhou888.com.cn/v2/ecapi.product.get",
+		data:{
+			product:goodsid
+		},
+		type:"post",
+		dataType:"json",
+		success:function(data){
+			console.log(data);
+			$(".num-plus").on("click",function(evt){
+				evt.preventDefault()
+				$(this)[0].previousElementSibling.value++;//注意上限不能超过库存量
+				if($(this)[0].previousElementSibling.value>data.product.good_stock){
+					$.toast("已超出库存数量","text");
+					$(this)[0].previousElementSibling.value = data.product.good_stock;
+				}
+				
+			})
+			var slideArr = data.product.photos;
+			swiperRender(slideArr);	//渲染轮播图			
+			$("section.goods-title  .dis-box h3").html(data.product.name);//更新商品名称
+			
+			// 更新商品价格
+			var str = template("goods-price", data.product);
+			$("section.goods-price").html(str);
+			// 更新评论
+			
+			// 更新商品详情
+			$("#goods-desc").html(data.product.goods_desc);
+				
+		}
+	})
+	// 该商品的评论数据
+	$.ajax({
+		url:"http://api.shenzhou888.com.cn/v2/ecapi.review.product.list",
+		data:{
+			page:1,
+			per_page:10,
+			product:goodsid
+		},
+		type:"post",
+		dataType:"json",
+		success:function(data){
+			console.log( data );
+		}		
+	})
+	$("#ECS_COLLECT").on("click",function(){
+		//判断是否已收藏，分别调用添加或取消收藏
+		if(!localStorage.getItem(goodsid)){
+			$.ajax({
+				url:"http://api.shenzhou888.com.cn/v2/ecapi.product.like",
+				headers:{
+					 'X-ECAPI-Authorization':localStorage.getItem("userToken")
+				},
+				data:{
+					product:goodsid
+				},
+				type:"post",
+				dataType:"json",
+				success:function(data){
+					localStorage.setItem(goodsid,goodsid);
+					console.log( data );
+					if( data.is_liked ){
+						$(".heart").addClass("active");
+						$.toast("添加收藏成功");
+					}
+				}
+			})
+		}else{
+			$.ajax({
+				url:"http://api.shenzhou888.com.cn/v2/ecapi.product.unlike",
+				headers:{
+					 'X-ECAPI-Authorization':localStorage.getItem("userToken")
+				},
+				data:{
+					product:goodsid
+				},
+				type:"post",
+				dataType:"json",
+				success:function(data){
+					window.localStorage.removeItem(goodsid);
+					console.log( data );
+					if( !data.is_liked ){
+						$(".heart").removeClass("active");
+						$.toast("取消收藏成功");
+					}
+				}
+			})
+		}
+		
+			
+		
+	})	
+	
+	
+	// 添加到购物车
+	$("#addCart").on("click",function(){
+		//判断用户是否登录
+		if(!checkuserLogin() ){
+			$.toast("需要登录才能添加购物车","text");
+			window.location.href = "login.html?url="+encodeURIComponent(window.location.href);;
+		}else{
+			//获取 usertoken，goodsid,amount，调【添加到购物车】接口http://api.ecshop.com/v2/ecapi.cart.add 添加到数据库，将该商品与用户token捆绑。然后提示“已添加到购物车”，继续停留本页面
+			$.ajax({
+				url:"http://api.shenzhou888.com.cn/v2/ecapi.cart.add",
+				headers:{
+					"X-ECAPI-Authorization":localStorage.getItem("userToken")
+				},
+				data:{
+					amount:$("#goods_number").val(),
+					product:goodsid,
+					property:[]
+				},
+				dataType:"json",
+				type:"post",
+				success:function(data){
+					console.log( data );
+					$.toast("添加购物车成功");
+					//更新下面购物车的角标数字
+					updataCartNum();
+				}
+			})
+		}
+	})	
+	// 点击了 立即购买
+	$("#buynow").on("click",function(){
+		//判断用户是否登录
+		if(!checkuserLogin() ){
+			$.toast("需要登录才能购买商品","text");
+			window.location.href = "login.html?url="+encodeURIComponent(window.location.href);
+		}else{
+			//跳转到订单确认页面，要生成订单需要先检查库存、生成价格、商品的id、检查收货地址等，然后将以上参数传递到order.html生成订单。
+			window.location.href = "order.html";
+		}		
+	})
+}	
+
+function swiperRender(slideArr){
+	var str="";
+	$.each(slideArr,function(index,item){
+		str += "<div class='swiper-slide'><img src="+ item.large +" /></div>";
+	})
+	$(".swiper-wrapper").html(str);
+	var mySwiper = new Swiper ('.swiper-container', {
+		direction: 'horizontal', // 垂直切换选项
+		loop: true, // 循环模式选项
+		// 如果需要分页器
+		pagination: {
+			el: '.swiper-pagination',
+		}
+	}) 
+}
+
+
+
+</script>

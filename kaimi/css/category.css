@@ -1,0 +1,392 @@
+/* 商品分类页相关css */
+/* 页头搜索部分 */
+.loding{
+	display: flex;
+	width: 100%;
+	height: 500px;
+	justify-content: center;
+	align-items: center;
+}
+.category-top .search {
+	border-bottom: 1px solid #e8e8e8;
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	z-index: 1;
+	background: #F6F6F9;
+}
+
+.search {
+	padding: 0 0.833333rem;
+}
+
+.search .text-all {
+	border-bottom: 0;
+}
+
+.text-all {
+	border-bottom: 1px solid #F6F6F9;
+	padding: 0.833333rem 0;
+	width: 100%;
+	overflow: hidden;
+}
+
+.search .input-text {
+	padding: 0.25rem 0;
+	border-bottom: 0;
+	background: #fff;
+	background: #FFFFFF;
+	border-radius: 4px;
+	overflow: hidden;
+	position: relative;
+}
+
+.input-text {
+	position: relative;
+	font-size: 1.416666rem;
+}
+
+.search a.a-search-input {
+	display: block;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	top: 0;
+	z-index: 2;
+}
+
+.i-search-input i.icon-sousuo {
+	position: absolute;
+	font-size: 1.666666rem;
+	color: #999;
+	left: 0.833333rem;
+	top: 50%;
+	margin-top: -1.099999rem;
+}
+
+.iconfont {
+	font-family: "iconfont" !important;
+	font-size: 16px;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-stroke-width: 0.2px;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-sousuo:before {
+	content: "\e60b";
+}
+
+.search .n-input-text.i-search-input input {
+	padding-left: 3.083333rem;
+}
+
+.search .is-null {
+	right: 0.5rem;
+}
+
+.is-null {
+	font-size: 1.75rem;
+	color: #ddd;
+	top: 50%;
+	transition: all 0.2s;
+	margin-top: -1.083333rem;
+	z-index: 10;
+	position: absolute;
+	right: 0.2rem;
+	visibility: hidden;
+	opacity: 0;
+	-webkit-transition: all 0.1s;
+	-moz-transition: all 0.1s;
+	-o-transition: all 0.1s;
+	transition: all 0.1s;
+}
+
+.input-text input {
+	border: 0;
+	height: 2.5rem;
+	line-height: 2.5rem;
+	padding: 0.416666rem 0;
+	box-sizing: border-box;
+	width: 100%;
+	color: #555;
+	font-size: 1.333333rem;
+	padding-right: 0.833333rem;
+}
+
+/*=======================================
+		商品列表页
+  =======================================*/
+/*弹出层部分共用样式重写*/
+.c-filter-div .filter-city {
+	margin-top: 1px;
+}
+
+.c-filter-div .select-one,
+.c-filter-div .select-two {
+	margin-top: .7rem;
+}
+
+.c-filter-div .price-range {
+	padding-top: 0;
+}
+
+/*商品分类页*/
+.category-top .search {
+	border-bottom: 1px solid #e8e8e8;
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	z-index: 1;
+	background: #F6F6F9
+}
+
+.menu-left,
+.menu-right {
+	position: fixed;
+	left: 0;
+	top: 4.75rem;
+	bottom: 0;
+	overflow-y: scroll;
+	margin-bottom: 4.5rem;
+}
+
+.menu-right {
+	position: fixed;
+	left: 0;
+	top: 4.75rem;
+	bottom: 0;
+	overflow-y: scroll;
+}
+
+.menu-right #loading {
+	left: 9.166666rem;
+	top: 5.583333rem;
+}
+
+.menu-left {
+	background: #F6F6F9;
+	position: fixed;
+	left: 0;
+	top: 4.75rem;
+	bottom: 0;
+	margin-bottom: 4.166666rem;
+}
+
+
+.menu-left .swiper-scroll,
+.menu-right .swiper-scroll {
+	min-height: 100%;
+	max-height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+.menu-left ul li {
+	padding: 1.083333rem 0.666666rem;
+	box-sizing: border-box;
+	font-size: 15px;
+	width: 7.166666rem;
+	text-align: center;
+}
+
+.menu-left ul li.active {
+	background: #fff;
+	position: relative;
+	color: #1cbb7f
+}
+
+.menu-left ul li.active:before {
+	content: " ";
+	position: absolute;
+	display: block;
+	width: 2px;
+	height: 100%;
+	background: #1cbb7f;
+	top: 0;
+	left: 0;
+}
+
+.menu-right {
+	background: #fff;
+	position: inherit;
+	margin-left: 7.166666rem;
+	margin-top: 4.75rem;
+	right: 0;
+	bottom: 0;
+	left: 7.166666rem;
+	margin-bottom: 4.666666rem;
+}
+
+.menu-right h5 {
+	font-size: 1.25rem;
+	color: #666;
+	margin-top: 0.833333rem;
+	margin-bottom: 0.333333rem;
+}
+
+.menu-right h5:first-child {
+	margin-top: 0;
+}
+
+.menu-right ul {
+	overflow: hidden;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+
+.menu-right ul li {
+	text-align: center;
+}
+
+.menu-right ul li a {
+	display: block;
+	position: absolute;
+	left: 0.25rem;
+	top: 0.583333rem;
+	bottom: 0.583333rem;
+	right: 0.25rem;
+}
+
+/* .menu-right ul li:nth-child(3n+1) a {
+	left: 0;
+	right: 0.583333rem;
+}
+
+.menu-right ul li:nth-child(3n) a {
+	right: 0;
+	left: 0.583333rem;
+} */
+
+.menu-right ul li span {
+	display: block;
+	height: 2.166666rem;
+	line-height: 2.166666rem;
+	overflow: hidden;
+	text-align: center;
+	font-size: 1.25rem
+}
+
+.menu-right ul li img {
+	width: 100%;
+	height: auto;
+}
+
+.mune-no-img img {
+	display: none
+}
+
+.mune-no-img span {
+	border: 1px solid #efefef;
+	color: #555;
+	border-radius: 4px;
+}
+
+.category-top .menu-right {
+	position: fixed;
+	left: 0;
+	top: 0;
+}
+
+/*footer*/
+.footer-nav {
+	background-color: rgba(254, 253, 252, 1);
+	left: 0;
+	right: 0;
+	position: fixed;
+	margin: 0 auto;
+	bottom: 0;
+	z-index: 499;
+	box-shadow: 1px 5px 15px rgba(50, 50, 50, 0.3);
+	border-top: 1px solid #f6f6f9;
+	padding: 0.25rem 0
+}
+
+.footer-nav .nav-list {
+	font-size: 0.916666rem;
+	display: block;
+	text-align: center;
+	padding-top: 0rem;
+	color: #595959
+}
+
+.footer-nav .nav-list .nav-box {
+	background: url(../statics/img/ec-icon.png) no-repeat;
+	width: 2.25rem;
+	height: 2.25rem;
+	display: block;
+	margin: 0 auto;
+	background-size: 20.666666rem;
+}
+
+.footer-nav .nav-list .i-home {
+	background-position: -.02rem 0rem;
+}
+
+.footer-nav .nav-list .i-cate {
+	background-position: -2.25rem 0rem;
+}
+
+.footer-nav .nav-list .i-zhongchou {
+	background-position: -13.916666rem 0.083333rem;
+}
+
+.footer-nav .nav-list .i-zhongchou_user {
+	background-position: -16.25rem 0.083333rem;
+}
+
+.footer-nav .nav-list .i-zhongchou-order {
+	background-position: -18.541666rem 0.083333rem;
+}
+
+.footer-nav .nav-list .i-shop {
+	background-position: -9.25rem 0rem;
+}
+
+.footer-nav .nav-list .i-flow {
+	background-position: -4.816666rem 0rem;
+}
+
+.footer-nav .nav-list .i-user {
+	background-position: -6.983333rem 0rem;
+}
+
+.footer-nav .nav-list.active {
+	color: #1cbb7f
+}
+
+.footer-nav .nav-list.active .i-home {
+	background-position: 0.016666rem -2.5rem;
+}
+
+.footer-nav .nav-list.active .i-cate {
+	background-position: -2.25rem -2.5rem;
+}
+
+.footer-nav .nav-list.active .i-zhongchou {
+	background-position: -13.916666rem -2.5rem;
+}
+
+.footer-nav .nav-list.active .i-zhongchou_user {
+	background-position: -16.25rem -2.416666rem;
+}
+
+.footer-nav .nav-list.active .i-zhongchou-order {
+	background-position: -18.541666rem -2.416666rem;
+}
+
+.footer-nav .nav-list.active .i-shop {
+	background-position: -11.583333rem -2.5rem;
+}
+
+.footer-nav .nav-list.active .i-flow {
+	background-position: -4.816666rem -2.5rem;
+}
+
+.footer-nav .nav-list.active .i-user {
+	background-position: -6.983333rem -2.5rem;
+}
